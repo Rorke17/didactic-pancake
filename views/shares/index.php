@@ -13,9 +13,12 @@
 			<?php if(isset($_SESSION['is_logged_in']) && $_SESSION['user_data']['name'] == 'admin') : ?>
 				<form method="post" action="<?php echo ROOT_PATH; ?>shares/edit"><br />
 					<input type="hidden" name='shared_id' value="<?php echo $item['id']; ?>" />
-					<input class="btn btn-primary" name="update" type="submit" value="Update" />
-					<input class="btn btn-danger" name="delete" type="submit" value="Delete" />
-			</form>
+					<input class="btn btn-primary" name="edit" type="submit" value="Edit" />
+				</form>
+				<form method="post" action="<?php echo ROOT_PATH; ?>shares/delete"><br />
+					<input type="hidden" name='shared_id' value="<?php echo $item['id']; ?>" />
+					<input class="btn btn-danger btn-delete" name="delete" type="submit" value="Delete" />
+				</form>
 		<?php endif; ?>
 		</div>
 	<?php endforeach; ?>

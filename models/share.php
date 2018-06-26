@@ -34,19 +34,35 @@ class ShareModel extends Model {
   public function edit() {
     //Sanitize POST
     $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-    if($post['delete']) {
-      //Insert into MySQL
-      $this->query('DELETE FROM shares WHERE id = :id');
-      $this->bind(':id', $post['shared_id']);
-      $this->execute();
-        header('Location: '.ROOT_URL.'shares');
-    }else if ($post['update']) {
+      if ($post['edit']) {
       $this->query('SELECT * FROM shares WHERE id = :id');
       $this->bind(':id', $post['shared_id']);
       $this->execute();
       $rows = $this->resultSet();
       return $rows;
+    }
+  }
+
+  public function update() {
+    $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    if ($post['update']) {
+      $this->query('UPDATE shares SET title = :title, body = :body, link = :link WHERE id = :id');
+      $this->bind(':title', $post['title']);
+      $this->bind(':body', $post['body']);
+      $this->bind(':link', $post['link']);
+      $this->bind(':id', $post['id']);
+      $this->execute();
+      header('Location: '.ROOT_URL.'shares');
+    }
+  }
+
+  public function delete() {
+    $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    if ($post['delete']) {
+      $this->query('DELETE FROM shares WHERE id = :id');
+      $this->bind(':id', $post['shared_id']);
+      $this->execute();
+      header('Location: '.ROOT_URL.'shares');
     }
   }
 }

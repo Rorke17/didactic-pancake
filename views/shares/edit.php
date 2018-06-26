@@ -4,30 +4,24 @@
   </div>
   <div class="panel-body">
     <?php if(true) : ?>
-    <form method="post" action="<?php $_SERVER['PHP_SELF']; ?>">
+    <form method="post" action="<?php echo ROOT_PATH; ?>shares/update">
       <?php foreach($viewModel as $item) : ?>
+        <input type="hidden" name="id" class="form-control" value="<?php echo $item['id']; ?>" />
     	<div class="form-group">
     		<label>Edit Title</label>
     		<input type="text" name="title" class="form-control" value="<?php echo $item['title']; ?>" />
     	</div>
     	<div class="form-group">
     		<label>Edit Body</label>
-    		<textarea name="body" class="form-control"><?php echo $item['title']; ?></textarea>
+    		<textarea name="body" class="form-control"><?php echo $item['body']; ?></textarea>
     	</div>
     	<div class="form-group">
     		<label>Edit Link</label>
-    		<input type="text" name="link" class="form-control" value="<?php echo $item['title']; ?>" />
+    		<input type="text" name="link" class="form-control" value="<?php echo $item['link']; ?>" />
     	</div>
     	<input class="btn btn-primary" name="update" type="submit" value="Update" />
         <a class="btn btn-danger" href="<?php echo ROOT_PATH; ?>shares">Cancel</a>
         <?php endforeach; ?>
-    </form>
-  <?php endif; ?>
-  <?php if(isset($_SESSION['delete'])) : ?>
-    <form method="post" action="<?php echo ROOT_URL; ?>shares/delete">
-      <label>Do you want to delete post?</label>
-      <input type="hidden" name='shared_id' value="<?php echo $item['id']; ?>" />
-      <input class="btn btn-warning" name="delete" type="submit" value="Delete" />
     </form>
   <?php endif; ?>
   </div>
