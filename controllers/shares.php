@@ -13,6 +13,7 @@ class Shares extends Controller {
     $this->returnView($viewModel->add(), true);
   }
 
+<<<<<<< HEAD
   protected function edit() {
     if(!isset($_SESSION['is_logged_in'])) {
       header('Location: '.ROOT_URL.'shares');
@@ -38,6 +39,8 @@ class Shares extends Controller {
   }
 
 
+=======
+>>>>>>> 38489ae786620d1e98d1f3d9fb3f1db17a32b11a
 }
 
 ?>
