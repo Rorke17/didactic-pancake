@@ -4,10 +4,7 @@ class ShareModel extends Model {
     $this->query('SELECT * FROM shares ORDER BY create_date DESC');
     $rows = $this->resultSet();
     return $rows;
-<<<<<<< HEAD
 
-=======
->>>>>>> 38489ae786620d1e98d1f3d9fb3f1db17a32b11a
   }
 
   public function add() {
@@ -34,7 +31,6 @@ class ShareModel extends Model {
     }
   }
 
-<<<<<<< HEAD
   public function edit() {
     //Sanitize POST
     $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -69,8 +65,5 @@ class ShareModel extends Model {
       header('Location: '.ROOT_URL.'shares');
     }
   }
-=======
->>>>>>> 38489ae786620d1e98d1f3d9fb3f1db17a32b11a
 }
-
 ?>
